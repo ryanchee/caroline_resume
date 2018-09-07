@@ -149,7 +149,7 @@
 \definecolor{awesome-darknight}{HTML}{131A28}
 \definecolor{awesome-darkblue}{HTML}{024e8e}
 \definecolor{awesome-darkred}{HTML}{82030c}
-\definecolor{awesome-tan}{HTML}{d8b365}
+\definecolor{awesome-tan}{HTML}{006392} %currentcolor
 
 
 
@@ -159,10 +159,10 @@
 \newbool{acvSectionColorHighlight}
 \setbool{acvSectionColorHighlight}{true}
 
-% Awesome section color
-\def\@sectioncolor#1{%
-  \ifbool{acvSectionColorHighlight}{{\color{awesome-red}#1}}{#1}%
+\def\@sectioncolor#1#2#3{%
+  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
 }
+
 
 
 %-------------------------------------------------------------------------------
@@ -204,7 +204,7 @@
 \newcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{graytext}\@sectioncolor #1}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{awesome-tan}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
@@ -229,8 +229,8 @@
 \newcommand*{\honorlocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\slshape\color{text} #1}}
 
 % For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{12pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\color{text} #1}}
 
 
 % For elements of the cover letter
@@ -582,7 +582,7 @@
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
       \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
@@ -615,6 +615,10 @@
 %     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
 }
+
+
+
+
 
 
 
@@ -663,8 +667,8 @@
 
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-4.0mm}
+\vspace{\acvSectionContentTopSkip}
+  \vspace{-5.0mm}
   \begin{center}
     \setlength\tabcolsep{0.5ex}
     \setlength{\extrarowheight}{0pt}
